@@ -1,6 +1,7 @@
 import { Entity, Column, OneToMany, PrimaryGeneratedColumn, Unique } from "typeorm"
 import { Usuario } from "./Usuario"
 import { IsNotEmpty, Matches } from "class-validator"
+import { Ubicacion } from "./Ubicacion"
 
 @Entity()
 export class Cliente extends Usuario {
@@ -24,5 +25,8 @@ export class Cliente extends Usuario {
     @Column({unique: true})
     @IsNotEmpty({ message: 'El alias no puede estar en blanco' })
     alias: string
+
+    @OneToMany(() => Ubicacion, ubicacion => ubicacion.cliente, {nullable: false})
+    direccion:Ubicacion[]
     
 }

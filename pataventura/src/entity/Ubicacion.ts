@@ -1,6 +1,7 @@
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm"
 import { Paseador } from "./Paseador";
 import { Guardian } from "./Guardian";
+import { Cliente } from "./Cliente";
 
 @Entity()
 export class Ubicacion{
@@ -14,9 +15,6 @@ export class Ubicacion{
     @Column()
     latidud: number
 
-    @ManyToOne(() => Paseador, paseador => paseador.direccion)
-    paseador: Paseador
-
-    @ManyToOne(() => Guardian, guardian => guardian.direccion)
-    guardian: Guardian
+    @ManyToOne(() => Cliente, cliente => cliente.direccion)
+    cliente: Cliente
 }

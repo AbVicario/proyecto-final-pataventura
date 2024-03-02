@@ -15,7 +15,4 @@ export class Guardian extends Cliente{
     @OneToMany(() => Servicio, servicio => servicio.guardian)
     servicios: Servicio[];
 
-    @OneToMany(() => Ubicacion, ubicacion => ubicacion.guardian)
-    direccion:Ubicacion[]
-
 }
