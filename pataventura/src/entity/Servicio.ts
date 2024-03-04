@@ -1,4 +1,4 @@
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinTable, ManyToMany, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { Paseador } from "./Paseador";
 import { Mascota } from "./Mascota";
 import { Guardian } from "./Guardian";
@@ -25,10 +25,12 @@ export class Servicio{
     @Column()
     estado: string
 
-    @ManyToOne(() => Paseador, paseador => paseador.servicios, {nullable: true} )
+    @ManyToMany(() => Paseador, paseador => paseador.servicios, {nullable: true} )
+    @JoinTable()
     paseador: Paseador;
 
-    @ManyToOne(() => Guardian, guardian => guardian.servicios, {nullable:true} )
+    @ManyToMany(() => Guardian, guardian => guardian.servicios, {nullable:true} )
+    @JoinTable()
     guardian: Guardian;
 
     @ManyToOne(() => Mascota, mascota => mascota.servicios)

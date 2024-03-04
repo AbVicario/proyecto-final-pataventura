@@ -1,4 +1,4 @@
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinTable, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { Cliente } from "./Cliente";
 import { Servicio } from "./Servicio";
 import { Ubicacion } from "./Ubicacion";
@@ -13,6 +13,7 @@ export class Guardian extends Cliente{
     precioDia : number
 
     @OneToMany(() => Servicio, servicio => servicio.guardian)
+    @JoinTable()
     servicios: Servicio[];
 
 }
